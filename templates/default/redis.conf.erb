@@ -288,6 +288,7 @@ appendfsync <%= @appendfsync %>
 # You can reclaim memory used by the slow log with SLOWLOG RESET.
 <%= "# " unless @configure_slowlog -%>slowlog-max-len <%= @slowlog_max_len %>
 
+<%- if @vm['enabled'] && @vm['enabled'] != 'no' -%>
 ################################ VIRTUAL MEMORY ###############################
 
 # Virtual Memory allows Redis to work with datasets bigger than the actual
@@ -360,6 +361,7 @@ vm-pages <%= @vm[:pages] %>
 # The special value of 0 turn off threaded I/O and enables the blocking
 # Virtual Memory implementation.
 vm-max-threads <%= @vm[:max_threads] %>
+<%- end # if @vm['enabled'] && @vm['enabled'] != 'no' -%>
 
 ############################### ADVANCED CONFIG ###############################
 
